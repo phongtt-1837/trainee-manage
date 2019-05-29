@@ -48,4 +48,6 @@ interface ResultRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+    public function getResult();
+    public function getTraineeResult($id);
 }

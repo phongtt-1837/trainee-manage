@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ScheduleRepositoryInterface;
 use App\Repositories\TraineeRepositoryInterface;
+use Gate;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\TraineeRequest;
 
@@ -27,6 +29,10 @@ class TraineeController extends Controller
     {
         if (!is_null($request->check)) {
             $trainees = $this->trainee->timeLeft();
+
+            return view('admin.trainees.index', compact('trainees'));
+        } elseif (Gate::allows('see-trainers')) {
+            $trainees = $this->trainee->myTrainee();
 
             return view('admin.trainees.index', compact('trainees'));
         } else {

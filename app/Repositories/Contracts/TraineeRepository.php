@@ -266,4 +266,9 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
 
         return $almost_expired_trainees;
     }
+
+    public function myTrainee()
+    {
+        return $this->model->where('trainer_id', auth()->user()->trainer->id)->get();
+    }
 }
