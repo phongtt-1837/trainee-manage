@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     Route::resource('phases', 'PhaseController');
     //schedule
     Route::resource('schedules', 'ScheduleController');
-    Route::get('trainee_schedule/{id}', 'ScheduleController@getTraineeSchedule')->name('schedules.trainee_schedule');
+    Route::get('trainee_schedule/{trainee_id}/{course_id}', 'ScheduleController@getTraineeSchedule')->name('schedules.trainee_schedule');
     //course
     Route::resource('courses', 'CourseController');
     Route::post('addTraineeIntoCourse', 'CourseController@addTraineeIntoCourse')->name('courses.add_trainee_into_course');
@@ -37,6 +37,8 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     //profile
     Route::get('profile/{id}', 'UserController@showChangePasswordForm')->name('trainers.profile');
     Route::post('profile/{id}', 'UserController@changePassword')->name('trainers.update_profile');
+    Route::resource('results', 'ResultController');
+
 
 });
 
@@ -46,3 +48,4 @@ Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test'
 
 Route::get('profile/{id}', 'UserController@showChangePasswordForm')->name('trainees.profile')->middleware('admin')->middleware('can:see-trainees');
 Route::post('profile/{id}', 'UserController@changePassword')->name('trainees.update_profile')->middleware('admin')->middleware('can:see-trainees');
+Route::get('trainee_result', 'ResultController@getResult')->name('trainee.trainee_result')->middleware('admin')->middleware('can:see-trainees');

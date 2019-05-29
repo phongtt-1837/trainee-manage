@@ -55,7 +55,7 @@
                                         <tbody>
                                         @foreach ($trainees as $trainee)
                                             <tr>
-                                                <th scope="row"> <a href="{{ route('schedules.trainee_schedule', $trainee->course_id) }}">{{ $trainee->id }}</a></th>
+                                                <th scope="row"> <a href="{{ route('schedules.trainee_schedule', [$trainee->id, $trainee->course_id]) }}">{{ $trainee->id }}</a></th>
                                                 <td>{{ optional($trainee->user)->email }}</td>
                                                 <td>{{ optional($trainee->user)->name }}</td>
                                                 <td>{{ optional($trainee->language)->name }}</td>

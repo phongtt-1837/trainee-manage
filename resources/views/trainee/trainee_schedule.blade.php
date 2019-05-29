@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <h2>{{ __($schedule->name) }}</h2>
         <div id="expired">
-            @if (is_null($current_phase['days_left']))
+            @if (is_null($current_phase['days_left']) || $current_phase['days_left'] == '')
                 <h2>{{ __('Expired') }}</h2>
             @else
                 <h2>{{ __('This phase has ' . $current_phase['days_left'] . ' day(s) left') }}</h2>

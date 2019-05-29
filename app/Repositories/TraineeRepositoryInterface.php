@@ -83,4 +83,5 @@ interface TraineeRepositoryInterface
     public function showTest();
     public function getCourse();
     public function timeLeft();
+    public function myTrainee();
 }

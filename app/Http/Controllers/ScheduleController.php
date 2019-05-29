@@ -129,7 +129,7 @@ class ScheduleController extends Controller
     }
 
     // @param course id
-    public function getTraineeSchedule($id)
+    public function getTraineeSchedule($trainee_id,$id)
     {
         if ($id == 0) {
             return redirect()->route('trainees.index')->with('status', __('This trainee has not joined a course '));
@@ -139,8 +139,8 @@ class ScheduleController extends Controller
         $schedule = $this->schedule->get([], $schedule_id);
         $phases = $this->schedule->getPhase($schedule_id);
         $duration = $this->schedule->getTime($schedule_id);
-        $trainees = $this->trainee->all();
+        $trainee = $this->trainee->get([], $trainee_id);
 
-        return view('admin.schedules.trainee_schedule', compact('schedule', 'phases', 'duration', 'trainees', 'current_phase'));
+        return view('admin.schedules.trainee_schedule', compact('schedule', 'phases', 'duration', 'trainee', 'current_phase'));
     }
 }

@@ -81,11 +81,14 @@
                         <a class="menu-item" href="{{ route('trainees.show_test') }}" data-i18n="nav.templates.vert.main">{{ __('My Tests in courses') }}</a>
                     </li>
                     @endcan
-                    <!-- For Trainee here -->
                 </ul>
             @can ('see-trainees')
             <li class=" nav-item"><a href="{{ route('trainee.trainee_schedule') }}"><i class="la la-calendar"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Schedule') }}</span></a>
             </li>
+            @endcan
+            @can ('see-trainees')
+                <li class=" nav-item"><a href="{{ route('trainee.trainee_result') }}"><i class="la la-calendar"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Result') }}</span></a>
+                </li>
             @endcan
         </ul>
     </div>
