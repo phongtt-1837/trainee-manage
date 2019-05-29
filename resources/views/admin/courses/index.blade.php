@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', __('Phases'))
+@section('title', __('Course'))
 @section('content')
 <div class="content-wrapper">
     <div class="content-header row">
@@ -17,6 +17,16 @@
                             <ul class="list-inline mb-0">
                                 <li><a href="{{ route('courses.create') }}" class="btn btn-outline-info btn-glow">{{ __('Create') }}</a></li>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4 ml-auto">
+                            <select id="select_language" class="form-control border-info" data-url="{!! http_build_query(Request::except('language')) !!}">
+                                <option value="0">{{ __('All') }}</option>
+                                @foreach($languages as $language)
+                                <option value="{{ $language->id }}" {{ request()->query('language') == $language->id ? 'selected' : '' }}>{{ $language->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     @include('admin.components.alert')
@@ -63,3 +73,7 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+    <script src="{{ mix('js/filter.js') }}"></script>
+@endpush

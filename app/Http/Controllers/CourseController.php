@@ -36,11 +36,15 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $courses = $this->course->all(['schedule', 'schedule.language', 'schedule.staff_type']);
-
-        return view('admin.courses.index', compact('courses'));
+        if ($request->has('language')) {
+            $courses = $this->course->filterLanguage(['schedule', 'schedule.language', 'schedule.staff_type'], $request->input('language'));
+        }
+        $languages = $this->trainee->getLanguage();
+        
+        return view('admin.courses.index', compact('courses', 'languages'));
     }
 
     /**

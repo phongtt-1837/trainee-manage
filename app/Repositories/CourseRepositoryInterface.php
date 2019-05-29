@@ -48,4 +48,11 @@ interface CourseRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    /**
+     * filter by language
+     * @param  int $array relation, int $language
+     * @return colection
+     */
+    public function filterLanguage($relation, $language);
 }

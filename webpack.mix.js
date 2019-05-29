@@ -19,4 +19,4 @@ mix.copy('resources/js/multiselect.js', 'public/js/multiselect.js');
 mix.copy('resources/js/timeline.js', 'public/js/timeline.js');
 mix.copy('resources/js/mark_as_read.js', 'public/js/mark_as_read.js');
 mix.copy('resources/sass/custom.css', 'public/css/custom.css');
-
+mix.copy('resources/js/filter.js', 'public/js/filter.js');

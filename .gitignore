@@ -1,6 +1,5 @@
 /node_modules
-/public/hot
-/public/storage
+/public
 /storage/*.key
 /vendor
 .env
@@ -12,9 +11,6 @@ yarn-error.log
 .README.md
 .readme.md
 .gitconfig
-/public/bower_components
 .bowerrc
 bower.json
 /.idea
-/public/css
-/public/js
