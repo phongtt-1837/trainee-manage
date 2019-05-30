@@ -4,12 +4,14 @@ namespace App\Repositories\Contracts;
 
 use App\Models\Course;
 use App\Models\Phase;
+use App\Models\Result;
 use App\Models\StaffType;
 use App\Models\Trainee;
 use App\Repositories\ScheduleRepositoryInterface;
 use App\Repositories\Contracts\BaseRepository;
 use App\Models\Schedule;
 use Carbon\Carbon;
+use http\Env\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -128,5 +130,25 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
         }
 
         return $result;
+    }
+
+    public function getSinglePhaseResult($data)
+    {
+        $result = Result::where('trainee_id', $data['trainee_id'])->first();
+        if ($result == null){
+            return $this_phase_result = array();
+        }
+        $result = explode('|', $result->result);
+        $phase_have_test = json_decode($result[0], true);
+        $phase_have_no_test = json_decode($result[1], true);
+        $all_result = array_merge($phase_have_test, $phase_have_no_test);
+        $keys = array_keys($all_result);
+        $values = array_values($all_result);
+
+        $this_phase_result = array(
+            $keys[$data['index_phase']] => $values[$data['index_phase']],
+        );
+
+        return $this_phase_result;
     }
 }
