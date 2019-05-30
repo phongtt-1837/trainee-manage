@@ -60,4 +60,5 @@ interface ScheduleRepositoryInterface
     public function getScheduleArray();
     public function getTraineeSchedule($id);
     public function getCurrentPhase($id);
+    public function getSinglePhaseResult($data);
 }

@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@index')->name('home')->middleware('admin')->midd
 
 Route::post('mark_as_read', 'TestController@markAsRead');
 
+Route::post('get_single_result', 'ScheduleController@getSingleResult');
+
 Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard');
     //trainer

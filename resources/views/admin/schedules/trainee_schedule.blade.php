@@ -14,10 +14,15 @@
             <div class="btn btn-outline-info btn-glow float-right ml-4">
                 <a href="{{ route('results.edit', $trainee->id) }}"> {{ __('Result') }}</a>
             </div>
-
         </div>
+        <div class="popup-detail">
+            <label>{{ __('Result of phase') }}</label>
+            <h4></h4>
+        </div>
+
         <input type="hidden" id="current_phase" name="current_phase" value="{{ $current_phase['current_phase'] }}">
         <input type="hidden" id="days_left" name="days_left" value="{{ $current_phase['days_left'] }}">
+        <input type="hidden" id="trainee_id" name="trainee_id" value="{{ $trainee->id }}">
         <div id="my-timeline" data-duration="{{ json_encode($duration) }}">
 
         </div>

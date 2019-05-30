@@ -143,4 +143,13 @@ class ScheduleController extends Controller
 
         return view('admin.schedules.trainee_schedule', compact('schedule', 'phases', 'duration', 'trainee', 'current_phase'));
     }
+
+    public function getSingleResult(Request $request)
+    {
+        if (empty($this->schedule->getSinglePhaseResult($request))) {
+            return response()->json();
+        } else {
+            return response()->json($this->schedule->getSinglePhaseResult($request));
+        }
+    }
 }
