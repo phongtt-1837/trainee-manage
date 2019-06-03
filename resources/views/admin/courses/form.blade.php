@@ -29,17 +29,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="end_date">{{ __('End Date') }}</label>
-                    <input type="date" id="end_date" class="form-control {{ $errors->has('end_date') ? 'border-danger' : '' }}" placeholder="{{ __('End Date') }}" name="end_date" value="{{ isset($course) ? old('end_date', $course->end_date) : old('end_date', date('Y-m-d')) }}">
-                    @if ($errors->has('name'))
-                        <span class="help-block text-danger">
-                            <strong>{{ $errors->first('end_date') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
+            <input type="hidden" id="end_date" name="end_date" value="">
         </div>
         <div class="row justify-content-start">
             <div class="col-md-6">
