@@ -70,7 +70,6 @@ class TestRepository extends BaseRepository implements TestRepositoryInterface
             return true;
         } elseif (auth()->user()->trainer) {
             $user = auth()->user()->trainer;
-            dd($user->unreadNotifications);
             $user->unreadNotifications->markAsRead();
 
             return true;

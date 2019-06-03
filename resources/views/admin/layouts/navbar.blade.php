@@ -83,7 +83,12 @@
                         @endif
                         @if (Auth::user()->can('see-trainees'))
                             @foreach (auth()->user()->trainee->unreadNotifications as $notification)
+                                @if ($notification->data['title'] == config('constants.notification.course_expired'))
+                                <a href="{{ route('trainee.trainee_schedule') }}">
+                                @endif
+                                @if ($notification->data['title'] == config('constants.notification.test_result'))
                                 <a href="{{ route('trainees.show_test') }}">
+                                @endif
                                     <div class="media">
                                         <div class="media-left align-self-center"><i class="ft-file icon-bg-circle bg-teal"></i></div>
                                         <div class="media-body">

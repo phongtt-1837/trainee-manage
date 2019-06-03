@@ -39,5 +39,6 @@ return [
     'notification' => [
         'test' => 'Test',
         'test_result' => 'Test Result',
+        'course_expired' => 'Course Expired',
     ],
 ];
